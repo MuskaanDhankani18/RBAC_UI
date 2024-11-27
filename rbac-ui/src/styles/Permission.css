@@ -1,0 +1,342 @@
+/* .permissions-management {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  .title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .management-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .role-list {
+    flex: 1;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .role-list h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  .role-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .role-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .role-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .role-item.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+  
+  .permissions-details {
+    flex: 2;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .permissions-details h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #444;
+  }
+  
+  .permissions-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .permission-item {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .permission-item .remove-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .permission-item .remove-btn:hover {
+    color: #ff4d4f;
+  }
+  
+  .add-permission {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .add-permission input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .add-permission button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .add-permission button:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-permission button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  } */
+  
+
+
+/* Permission Management Container */
+/* .permissions-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  } */
+  
+  /* Heading Style */
+  /* .permissions-container h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+  } */
+  
+  /* Add Permission Button */
+  /* button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  } */
+  
+  /* Add Permission Form */
+  /* .add-permission-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .add-permission-form input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .add-permission-form button {
+    background-color: #007bff;
+    margin-top: 10px;
+  }
+  
+  .add-permission-form button[type="button"] {
+    background-color: #ccc;
+    margin-left: 10px;
+  }
+   */
+  /* Permission List */
+  /* .permission-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .permission-list li {
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .permission-list li span {
+    font-size: 16px;
+    color: #333;
+  }
+   */
+
+
+
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.rbac-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Role List */
+.role-list {
+  width: 25%;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.role-list h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.role-item {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #eaeaea;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.role-item:hover {
+  background-color: #d0d0d0;
+}
+
+.role-item.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+/* Permission Panel */
+.permission-panel {
+  width: 70%;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.permission-panel h3 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.module {
+  margin-bottom: 20px;
+}
+
+.module h4 {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.permissions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.permissions label {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.permissions label:hover {
+  background-color: #e6f7ff;
+  border-color: #007bff;
+}
+
+.permissions input[type='checkbox'] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .rbac-container {
+    flex-direction: column;
+  }
+
+  .role-list,
+  .permission-panel {
+    width: 100%;
+  }
+}
