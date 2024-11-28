@@ -13,13 +13,19 @@ User Management-
     - Enabled assigning roles to users and managing their status (e.g., Active/Inactive).
 
 Role Management-
+
     - Created a way to define and edit roles.
-    - Allowed roles to include permissions (e.g., Read, Write, Delete) or custom attributes.
+    
+    - Allowed roles to include permissions or custom attributes.
 
 Dynamic Permissions-
+
     - Designed a method to assign or modify permissions for roles.
+    
     - Displayed permissions clearly for ease of understanding and modification.
 
 Custom API Simulation-
+
     - Implemented Mock API calls for CRUD operations on users and roles.
+    
     - Simulated server responses to validate functionality.
