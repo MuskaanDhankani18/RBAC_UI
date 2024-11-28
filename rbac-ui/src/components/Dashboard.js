@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Dashboard.css";
 
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log("location.state"+location.state);
+  const username = location.state?.username || null;
+  const handleLogout = () => {
+    navigate("/login"); // Redirect to the login page
+  };
 
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -16,14 +24,11 @@ const Dashboard = () => {
     <div className={`dashboard ${isDarkTheme ? "dark-theme" : ""}`}>
       {/* Top Navbar */}
       <header className="dashboard-header">
-        <h1>Admin Dashboard</h1>
+      <h1>Welcome, {username}!</h1>
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/logout">Logout</Link>
+            <button className="theme-toggle" onClick={handleLogout}>Logout</button >
             </li>
           </ul>
           <button className="theme-toggle" onClick={toggleTheme}>
@@ -61,4 +66,6 @@ const Dashboard = () => {
 
 
 export default Dashboard;
+
+
 
