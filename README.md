@@ -4,13 +4,15 @@ Featuring an intuitive interface built with React.js, it supports role hierarchy
 
 To run the project on localhost :
 
-Navigate to the project directory:
+1. Navigate to the project directory:
+
 cd rbac-ui
 
-Start the development server by running the following command in the terminal:
+2. Start the development server by running the following command in the terminal:
+
 npm start
 
-Open your browser and go to http://localhost:3000 (or the port specified in the project) to view the application.
+3. Open your browser and go to http://localhost:3000 (or the port specified in the project) to view the application.
 
 Implemented following steps: 
 
