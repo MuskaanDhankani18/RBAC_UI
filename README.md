@@ -1,7 +1,9 @@
 # RBAC_UI
 It is a web application for efficiently managing user roles and permissions within an organization. 
 Featuring an intuitive interface built with React.js, it supports role hierarchy, granular access controls, audit trails, and customizable permissions. With search, filters, and visualizations, it simplifies permission management while enhancing security and scalability.
+
 Implemented following steps: 
+
 User Management-
     - Provided a way to view and manage users.
     - Included options to add, edit, or delete users.
