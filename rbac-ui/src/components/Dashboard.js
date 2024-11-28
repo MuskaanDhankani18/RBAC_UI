@@ -37,16 +37,16 @@ const Dashboard = () => {
         <aside className="dashboard-sidebar">
           <ul>
             <li>
-              <Link to="/user-management">Manage Users</Link>
+              <Link to="user-management">Manage Users</Link>
             </li>
             <li>
-              <Link to="/role-management">Manage Roles</Link>
+              <Link to="role-management">Manage Roles</Link>
             </li>
             <li>
-              <Link to="/permission-management">Manage Permissions</Link>
+              <Link to="permission-management">Manage Permissions</Link>
             </li>
             <li>
-              <Link to="/reports">Reports</Link>
+              <Link to="reports">Reports</Link>
             </li>
           </ul>
         </aside>

@@ -26,12 +26,25 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Dashboard />}>
+
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route
+          path="/dashboard"
+          element={
+            isLoggedIn ? (
+              <Dashboard onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        >
           <Route path="user-management" element={<UserManagement />} />
           <Route path="role-management" element={<RoleManagement />} />
           <Route path="permission-management" element={<PermissionManagement />} />
           <Route path="reports" element={<Reports />} /> {/* Add Route for Reports */}
         </Route>
+        
       </Routes>
     </Router>
   );
