@@ -2,6 +2,16 @@
 The Role-Based Access Control (RBAC) UI is a web application for efficiently managing user roles and permissions within an organization. 
 Featuring an intuitive interface built with React.js, it supports role hierarchy, granular access controls, audit trails, and customizable permissions. With search, filters, and visualizations, it simplifies permission management while enhancing security and scalability.
 
+To run the project on localhost :
+
+Navigate to the project directory:
+cd rbac-ui
+
+Start the development server by running the following command in the terminal:
+npm start
+
+Open your browser and go to http://localhost:3000 (or the port specified in the project) to view the application.
+
 Implemented following steps: 
 
 User Management-
