@@ -5,8 +5,11 @@ Featuring an intuitive interface built with React.js, it supports role hierarchy
 Implemented following steps: 
 
 User Management-
+
     - Provided a way to view and manage users.
+    
     - Included options to add, edit, or delete users.
+    
     - Enabled assigning roles to users and managing their status (e.g., Active/Inactive).
 
 Role Management-
