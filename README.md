@@ -6,11 +6,11 @@ To run the project on localhost :
 
 1. Navigate to the project directory:
 
-"cd rbac-ui"
+- cd rbac-ui
 
 2. Start the development server by running the following command in the terminal:
 
-"npm start"
+- npm start
 
 3. Open your browser and go to http://localhost:3000 (or the port specified in the project) to view the application.
 
