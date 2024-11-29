@@ -1,6 +1,6 @@
 export const users = [
-  { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin' },
-  { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Editor' },
+  { id: 1, name: 'Ravi Kumar', email: 'ravi@example.com', role: 'Admin' },
+  { id: 2, name: 'Karan Gupta', email: 'karan1@example.com', role: 'Editor' },
 ];
   
 export const roles = [
@@ -16,8 +16,8 @@ export const permissions = [
 
 // Mock Report Data (for activity logging)
 export const reportData = [
-  { date: "2024-11-20", user: "John Doe", action: "Created User", status: "Success" },
-  { date: "2024-11-21", user: "Jane Smith", action: "Updated Role", status: "Success" },
-  { date: "2024-11-22", user: "Alice Johnson", action: "Deleted User", status: "Failed" },
-  { date: "2024-11-23", user: "Bob Brown", action: "Created Role", status: "Success" }
+  { date: "2024-11-20", user: "Ravi Kumar", action: "Created User", status: "Success" },
+  { date: "2024-11-21", user: "Karan Gupta", action: "Updated Role", status: "Success" },
+  { date: "2024-11-22", user: "Gaurav Jain", action: "Deleted User", status: "Failed" },
+  { date: "2024-11-23", user: "Manu Sharma", action: "Created Role", status: "Success" }
 ];
