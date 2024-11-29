@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext"; 
 import "../styles/Login.css";
 
-const Login = ({ onLogin }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const { login } = useAuth(); 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (username === "admin" && password === "admin") {
-      navigate("/dashboard" , { state: { username }});
+      login(username);
+
+      navigate("/dashboard", { state: { username } });
     } else {
       setError("Invalid username or password");
     }
@@ -43,9 +48,6 @@ const Login = ({ onLogin }) => {
           />
           <button type="submit">Login</button>
         </form>
-        <div className="login-footer">
-          <a href="/forgot-password">Forgot Password?</a>
-        </div>
       </div>
     </div>
   );
