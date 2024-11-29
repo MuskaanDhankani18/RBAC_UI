@@ -1,59 +1,23 @@
-/* Modal overlay style - covers the full screen */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; /* ensures it's above other elements */
-  }
-  
-  /* Modal content container */
-  .modal {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Header section of the modal */
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .modal-header h2 {
-    margin: 0;
-    font-size: 1.5em;
-  }
-  
-  .close-btn {
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    color: #aaa;
-    cursor: pointer;
-  }
-  
-  .close-btn:hover {
-    color: black;
-  }
-  
-  /* Body section of the modal */
-  .modal-body {
-    padding: 10px;
-  }
-  
-  button {
-    cursor: pointer;
-  }
-  
-  
+import React from "react";
+import "../styles/Modal.css";
+
+const Modal = ({ isOpen, onClose, children, title }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal">
+        <div className="modal-header">
+          <h2>{title}</h2>
+          <button className="close-btn" onClick={onClose}>
+            ×
+          </button>
+        </div>
+        <div className="modal-body">{children}</div>
+      </div>
+    </div>
+  );
+};
+
+export default Modal;
+
