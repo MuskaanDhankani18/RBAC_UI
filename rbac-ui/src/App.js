@@ -5,11 +5,11 @@ import Dashboard from "./components/Dashboard";
 import UserManagement from "./components/UserManagement";
 import RoleManagement from "./components/RoleManagement";
 import PermissionManagement from "./components/PermissionManagement";
-import Reports from "./components/Report"; 
+import Reports from "./components/Report";
+import { AuthProvider, useAuth } from "./AuthContext"; 
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    // Check localStorage for existing session
     return localStorage.getItem("isLoggedIn") === "true";
   });
 
@@ -24,30 +24,33 @@ const App = () => {
   };
 
   return (
+    <AuthProvider>
     <Router>
       <Routes>
-
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route
-          path="/dashboard"
-          element={
-            isLoggedIn ? (
-              <Dashboard onLogout={handleLogout} />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        >
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route 
+            path="/dashboard" 
+            element={<ProtectedRoute><Dashboard /></ProtectedRoute>} >
           <Route path="user-management" element={<UserManagement />} />
           <Route path="role-management" element={<RoleManagement />} />
           <Route path="permission-management" element={<PermissionManagement />} />
-          <Route path="reports" element={<Reports />} /> {/* Add Route for Reports */}
+          <Route path="reports" element={<Reports />} />
         </Route>
-        
       </Routes>
     </Router>
+    </AuthProvider>
   );
+};
+
+const ProtectedRoute = ({ children }) => {
+  const { user } = useAuth();
+
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+
+  return children;
 };
 
 export default App;
