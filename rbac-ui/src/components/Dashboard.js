@@ -1,16 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Dashboard.css";
-
+import { useAuth } from "../AuthContext";
 
 const Dashboard = () => {
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   console.log("location.state"+location.state);
   const username = location.state?.username || null;
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
+  
   const handleLogout = () => {
-    navigate("/login"); // Redirect to the login page
+    logout();
+    navigate("/login"); 
   };
 
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -66,6 +75,3 @@ const Dashboard = () => {
 
 
 export default Dashboard;
-
-
-
