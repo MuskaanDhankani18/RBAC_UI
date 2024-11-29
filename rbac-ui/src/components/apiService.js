@@ -1,61 +1,6 @@
-// import { users, roles, permissions } from '../db';
-
-// const simulateDelay = (data) => {
-//   return new Promise((resolve) => {
-//     setTimeout(() => resolve(data), 500); // Simulate network delay
-//   });
-// };
-
-// export const getUsers = async () => simulateDelay(users);
-
-// export const createUser = async (newUser) => {
-//   users.push(newUser);
-//   return simulateDelay(newUser);
-// };
-
-// export const updateUser = async (id, updatedUser) => {
-//   const index = users.findIndex((user) => user.id === id);
-//   if (index !== -1) {
-//     users[index] = { ...users[index], ...updatedUser }; // Update the user
-//     return simulateDelay(users[index]);
-//   }
-//   return null;
-// };
-
-// export const deleteUser = async (id) => {
-//   const index = users.findIndex((user) => user.id === id);
-//   if (index !== -1) {
-//     users.splice(index, 1); // Remove the user from the list
-//   }
-//   return simulateDelay(null);
-// };
-
-// export const getRoles = async () => simulateDelay(roles);
-
-// export const createRole = async (newRole) => {
-//   roles.push(newRole);
-//   return simulateDelay(newRole);
-// };
-
-// export const updateRole = async (id, updatedRole) => {
-//   const index = roles.findIndex((role) => role.id === id);
-//   if (index !== -1) {
-//     roles[index] = { ...roles[index], ...updatedRole }; // Update role
-//     return simulateDelay(roles[index]);
-//   }
-//   return null;
-// };
-
-// export const deleteRole = async (id) => {
-//   const index = roles.findIndex((role) => role.id === id);
-//   if (index !== -1) {
-//     roles.splice(index, 1); // Remove role
-//   }
-//   return simulateDelay(null);
-// };
-
 import { users, roles, permissions, reportData } from '../db';
 
+// Simulate network delay
 const simulateDelay = (data) => {
   return new Promise((resolve) => {
     setTimeout(() => resolve(data), 500); // Simulate network delay
@@ -72,18 +17,18 @@ export const createUser = async (newUser) => {
   const id = users.length ? users[users.length - 1].id + 1 : 1; // Generate unique ID
   const userWithId = { ...newUser, id };
   users.push(userWithId);
+  
+  // Add a new entry to the report data when a new user is added
+  const newReportEntry = {
+    date: new Date().toISOString().split('T')[0], // Get current date
+    user: userWithId.name,
+    action: "Created User",
+    status: "Success"
+  };
+  reportData.push(newReportEntry);
+
   return simulateDelay(userWithId);
 };
-
-// Add a new entry to the report data when a new user is added
-const newReportEntry = {
-  date: new Date().toISOString().split('T')[0], // Get current date
-  user: users.name,
-  action: "Created User",
-  status: "Success"
-};
-reportData.push(newReportEntry);
-
 
 // Update a user by ID
 export const updateUser = async (id, updatedUser) => {
@@ -98,9 +43,20 @@ export const updateUser = async (id, updatedUser) => {
 // Delete a user by ID
 export const deleteUser = async (id) => {
   const index = users.findIndex((user) => user.id === id);
+  const name = users.at(index)?.name;
+  
   if (index !== -1) {
     users.splice(index, 1); // Remove user from the list
   }
+
+  const newReportEntry = {
+    date: new Date().toISOString().split('T')[0], // Get current date
+    user: name,
+    action: "User Deleted",
+    status: "Success"
+  };
+  reportData.push(newReportEntry);
+
   return simulateDelay(null); // Return null after deletion
 };
 
@@ -146,6 +102,16 @@ export const assignPermissions = async (roleId, updatedPermissions) => {
   const index = roles.findIndex((role) => role.id === roleId);
   if (index !== -1) {
     roles[index].permissions = { ...roles[index].permissions, ...updatedPermissions };
+    
+    // Log permission assignment to the report
+    const newReportEntry = {
+      date: new Date().toISOString().split('T')[0], // Get current date
+      user: `Role ${roles[index].name}`,
+      action: "Permissions Assigned",
+      status: "Success"
+    };
+    reportData.push(newReportEntry);
+
     return simulateDelay(roles[index]);
   }
   return simulateDelay(null); // Role not found
@@ -163,11 +129,20 @@ export const removePermissions = async (roleId, permissionsToRemove) => {
       },
       {}
     );
+
+    // Log permission removal to the report
+    const newReportEntry = {
+      date: new Date().toISOString().split('T')[0], // Get current date
+      user: `Role ${roles[index].name}`,
+      action: "Permissions Removed",
+      status: "Success"
+    };
+    reportData.push(newReportEntry);
+
     return simulateDelay(roles[index]);
   }
   return simulateDelay(null); // Role not found
 };
-
 
 // Report CRUD operations (for logging user activity)
 export const getReportData = async () => simulateDelay(reportData);
@@ -176,4 +151,36 @@ export const getReportData = async () => simulateDelay(reportData);
 export const addReportData = async (newReportEntry) => {
   reportData.push(newReportEntry);
   return simulateDelay(newReportEntry);
+};
+
+
+// Update role permissions (assign and remove in one call)
+export const updateRolePermissions = async (roleId, updatedPermissions) => {
+  const index = roles.findIndex((role) => role.id === roleId);
+  if (index !== -1) {
+    roles[index].permissions = updatedPermissions; // Replace all permissions with the updated set
+    
+    // Log the update to the report
+    const newReportEntry = {
+      date: new Date().toISOString().split('T')[0], // Get current date
+      user: `Role ${roles[index].name}`,
+      action: "Permissions Updated",
+      status: "Success",
+    };
+    reportData.push(newReportEntry);
+
+    return simulateDelay(roles[index]);
+  }
+  return simulateDelay(null); // Role not found
+};
+
+
+// Update a user's role by ID
+export const updateUserRole = async (userId, newRoleId) => {
+  const index = users.findIndex((user) => user.id === userId);
+  if (index !== -1) {
+    users[index] = { ...users[index], roleId: newRoleId }; // Update the user's role
+    return simulateDelay(users[index]);
+  }
+  return simulateDelay(null); // User not found
 };
